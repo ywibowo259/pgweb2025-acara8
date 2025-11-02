@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input Kecamatan</title>
+</head>
+<body>
+    <h2>Form Input Data Kecamatan</h2>
+
+    
+    <form action="input.php" onsubmit="return validateForm()" method="post">
+        <label for="kecamatan">Kecamatan:</label><br>
+        <input type="text" id="kec" name="kecamatan" required><br><br>
+
+        <label for="longitude">Longitude:</label><br>
+        <input type="text" id="long" name="longitude"><br><br>
+
+        <label for="latitude">Latitude:</label><br>
+        <input type="text" id="lat" name="latitude"><br><br>
+
+        <label for="luas">Luas (km²):</label><br>
+        <input type="text" id="luas" name="luas" required><br><br>
+
+        <label for="jumlah_penduduk">Jumlah Penduduk:</label><br>
+        <input type="number" id="jumlah_penduduk" name="jumlah_penduduk" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="informasi"></p>
+
+    <script>
+        function validateForm() {
+            let luas = document.getElementById("luas").value;
+            let text = "";
+            if (isNaN(luas) || luas < 1) {
+                text = "❌ Luas harus berupa angka dan lebih besar dari 0";
+                document.getElementById("informasi").innerHTML = text;
+                return false; // mencegah form dikirim
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
